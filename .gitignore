@@ -361,3 +361,8 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/ASP.NETCoreWebAPIDemo/.vshistory
+/ASP.NETCoreWebAPIDemo/Extension/.vshistory/SwaggerExtension.cs
+/Infrastructure/.vshistory
+/Infrastructure
+/.vshistory/ASP.NETCoreWebAPIDemo.sln
