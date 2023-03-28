@@ -364,5 +364,8 @@ FodyWeavers.xsd
 /ASP.NETCoreWebAPIDemo/.vshistory
 /ASP.NETCoreWebAPIDemo/Extension/.vshistory/SwaggerExtension.cs
 /Infrastructure/.vshistory
-/Infrastructure
 /.vshistory/ASP.NETCoreWebAPIDemo.sln
+/ASP.NETCoreWebAPIDemo/Controllers/.vshistory
+/Infrastructure/CustomException/.vshistory/ResultCode.cs
+/Infrastructure/Constant/.vshistory/HttpStatus.cs
+/Infrastructure/Model/.vshistory/ApiResult.cs
