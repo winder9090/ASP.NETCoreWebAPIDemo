@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ASP.NETCoreWebAPIDemo</name>
+    </assembly>
+    <members>
+        <member name="M:ASP.NETCoreWebAPIDemo.Controllers.BaseController.SUCCESS(System.Object,System.String)">
+            <summary>
+            返回成功封装
+            </summary>
+            <param name="data"></param>
+            <param name="timeFormatStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.Controllers.BaseController.ToResponse(Infrastructure.Model.ApiResult,System.String)">
+            <summary>
+            json输出带时间格式的
+            </summary>
+            <param name="apiResult"></param>
+            <param name="timeFormatStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.Controllers.BaseController.ToJson(System.Int64)">
+            <summary>
+            响应返回结果
+            </summary>
+            <param name="rows">受影响行数</param>
+            <returns></returns>
+        </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.Controllers.BaseController.GetApiResult(Infrastructure.CustomException.ResultCode,System.Object)">
+            <summary>
+            全局Code使用
+            </summary>
+            <param name="resultCode"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ASP.NETCoreWebAPIDemo.Extension.HttpContextExtension">
+            <summary>
+            HttpContext扩展类
+            </summary>
+        </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.Extension.HttpContextExtension.IsAjaxRequest(Microsoft.AspNetCore.Http.HttpRequest)">
+            <summary>
+            是否是ajax请求
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.Extension.HttpContextExtension.GetClientUserIp(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            获取客户端IP
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.Extension.HttpContextExtension.GetUId(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            获取登录用户id
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.Extension.HttpContextExtension.GetName(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            获取登录用户名
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.Extension.HttpContextExtension.IsAdmin(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            判断是否是管理员
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.Extension.HttpContextExtension.GetClaims(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            ClaimsIdentity
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.Extension.HttpContextExtension.GetToken(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            获取请求令牌
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.Extension.HttpContextExtension.GetRequestValue(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            设置请求参数
+            </summary>
+            <param name="operLog"></param>
+            <param name="context"></param>
+        </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.Extension.SwaggerExtension.UseSwagger(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            
+            </summary>
+            <param name="app"></param>
+        </member>
+        <member name="T:ASP.NETCoreWebAPIDemo.Filters.VerifyAttribute">
+            <summary>
+            授权校验访问
+            如果跳过授权登录在Action 或controller加上 AllowAnonymousAttribute
+            </summary>
+        </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.Filters.VerifyAttribute.OnAuthorization(Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext)">
+            <summary>
+            只判断token是否正确，不判断权限
+            如果需要判断权限的在Action上加上ApiActionPermission属性标识权限类别，ActionPermissionFilter作权限处理
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.Framework.JwtUtil.ValidParameters">
+            <summary>
+            验证Token
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.Framework.JwtUtil.GenerateJwtToken(System.Collections.Generic.List{System.Security.Claims.Claim},Infrastructure.JwtSettings)">
+            <summary>
+            生成token
+            </summary>
+            <param name="claims"></param>
+            <param name="jwtSettings"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.Framework.JwtUtil.AddClaims(Model.System.LoginUser)">
+             <summary>
+            组装Claims
+             </summary>
+             <param name="user"></param>
+             <returns></returns>
+        </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.Framework.JwtUtil.GetLoginUser(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            获取用户身份信息
+            </summary>
+            <param name="httpContext"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.Framework.JwtUtil.ParseToken(System.String)">
+            <summary>
+            从令牌中获取数据声明
+            </summary>
+            <param name="token">令牌</param>
+            <returns></returns>
+        </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.Framework.JwtUtil.ValidateJwtToken(System.Collections.Generic.IEnumerable{System.Security.Claims.Claim})">
+            <summary>
+            jwt token校验
+            </summary>
+            <param name="jwtToken"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

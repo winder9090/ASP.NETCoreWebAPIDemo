@@ -1,12 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ASP.NETCoreWebAPIDemo.Filters;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace ASP.NETCoreWebAPIDemo.Controllers
 {
+    [Verify]
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
@@ -23,6 +24,7 @@ namespace ASP.NETCoreWebAPIDemo.Controllers
             _logger = logger;
         }
 
+        [Verify]
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {

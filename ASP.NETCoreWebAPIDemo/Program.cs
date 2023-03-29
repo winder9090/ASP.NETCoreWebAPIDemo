@@ -1,11 +1,6 @@
+using Infrastructure.Startups;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ASP.NETCoreWebAPIDemo
 {
@@ -20,7 +15,9 @@ namespace ASP.NETCoreWebAPIDemo
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    webBuilder
+                    .Init("Infrastructure")
+                    .UseStartup<Startup>();
                 });
     }
 }
