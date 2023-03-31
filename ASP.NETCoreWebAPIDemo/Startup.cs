@@ -48,6 +48,22 @@ namespace ASP.NETCoreWebAPIDemo
 
             // 注册Services服务
             services.AddSingleton(new AppSettings(Configuration));
+
+            // 设置跨域
+            services.AddCors(options =>
+            {
+                // cors为策略名称，后面在web api控制器中添加的跨域策略名称要与此一致
+                options.AddPolicy("cors", builder =>
+                {
+                    builder
+                    .WithOrigins(new string[] { "http://10.10.10.82:7201", "http://localhost:3814",
+                        "http://localhost:41911", "http://localhost:8081" })  // 允许指定的域访问
+                    .AllowAnyHeader()       // 允许任何消息头
+                    .AllowAnyMethod()       // 允许任何 HTTP 方法
+                    .AllowCredentials();    // 允许跨源凭据
+                    // AllowAnyOrigin表示允许任何域；
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

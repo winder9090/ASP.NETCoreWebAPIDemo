@@ -28,7 +28,7 @@ namespace ASP.NETCoreWebAPIDemo.Controllers
         {
             LoginUser loginUser = new();
             loginUser.UserId = 1;
-            loginUser.UserName = "test";
+            loginUser.UserName = name;
 
             return SUCCESS(JwtUtil.GenerateJwtToken(JwtUtil.AddClaims(loginUser), jwtSettings.JwtSettings));
         }
