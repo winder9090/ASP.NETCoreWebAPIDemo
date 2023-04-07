@@ -4,6 +4,7 @@ using Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -77,6 +78,18 @@ namespace ASP.NETCoreWebAPIDemo
             // Swagger
             app.UseSwagger();
 
+            //使可以多次多去body内容
+            app.Use((context, next) =>
+            {
+                context.Request.EnableBuffering();
+                // 允许在Url中添加access_token=[token]，直接在浏览器中访问
+                if (context.Request.Query.TryGetValue("access_token", out var token))
+                {
+                    context.Request.Headers.Add("Authorization", $"Bearer {token}");
+                }
+                return next();
+            });
+
             //app.UseAuthentication会启用Authentication中间件，该中间件会根据当前Http请求中的Cookie信息来设置HttpContext.User属性（后面会用到），
             //所以只有在app.UseAuthentication方法之后注册的中间件才能够从HttpContext.User中读取到值，
             //这也是为什么上面强调app.UseAuthentication方法一定要放在下面的app.UseMvc方法前面，因为只有这样ASP.NET Core的MVC中间件中才能读取到HttpContext.User的值。
@@ -88,8 +101,6 @@ namespace ASP.NETCoreWebAPIDemo
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
-            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
