@@ -90,6 +90,12 @@ namespace ASP.NETCoreWebAPIDemo
                 return next();
             });
 
+            //开启路由访问
+            app.UseRouting();
+
+            // 配置CORS中间件，添加到app.UseRouting()和app.UseEndpoints()之间,core为策略名称
+            app.UseCors("cors");
+
             //app.UseAuthentication会启用Authentication中间件，该中间件会根据当前Http请求中的Cookie信息来设置HttpContext.User属性（后面会用到），
             //所以只有在app.UseAuthentication方法之后注册的中间件才能够从HttpContext.User中读取到值，
             //这也是为什么上面强调app.UseAuthentication方法一定要放在下面的app.UseMvc方法前面，因为只有这样ASP.NET Core的MVC中间件中才能读取到HttpContext.User的值。
@@ -98,9 +104,8 @@ namespace ASP.NETCoreWebAPIDemo
             //2.再开启授权
             app.UseAuthorization();
 
+            // HTTPS 重定向中间件 (UseHttpsRedirection) 将 HTTP 请求重定向到 HTTPS。
             app.UseHttpsRedirection();
-
-            app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
