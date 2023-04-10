@@ -1,5 +1,6 @@
 using ASP.NETCoreWebAPIDemo.Extension;
 using ASP.NETCoreWebAPIDemo.Framework;
+using Hei.Captcha;
 using Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -24,6 +25,9 @@ namespace ASP.NETCoreWebAPIDemo
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            //∆’Õ®—È÷§¬Î
+            services.AddHeiCaptcha();
 
             services.AddHttpContextAccessor();
 
