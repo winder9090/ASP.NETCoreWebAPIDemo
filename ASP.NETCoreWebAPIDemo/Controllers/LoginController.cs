@@ -1,4 +1,5 @@
 ﻿using ASP.NETCoreWebAPIDemo.Framework;
+using Common.Cache;
 using Hei.Captcha;
 using Infrastructure;
 using Infrastructure.Model;
@@ -27,13 +28,25 @@ namespace ASP.NETCoreWebAPIDemo.Controllers
             SecurityCodeHelper = captcha;
         }
 
-        [HttpGet]
+        /// <summary>
+        /// 登录
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="pass"></param>
+        /// <returns></returns>
         [Route("Login")] // 路由地址规则
-        public IActionResult Login(string name, string pass)
+        [HttpGet]
+        public IActionResult Login(string name, string pass, string Code, string Uuid)
         {
             LoginUser loginUser = new();
             loginUser.UserId = 1;
             loginUser.UserName = name;
+
+            // 从缓存中读取验证码并验证输入的验证码
+            if (CacheHelper.Get(Uuid) is string str && !str.ToLower().Equals(Code.ToLower()))
+            {
+                return ToResponse(103, "验证码错误");
+            }
 
             return SUCCESS(JwtUtil.GenerateJwtToken(JwtUtil.AddClaims(loginUser), jwtSettings.JwtSettings));
         }
@@ -52,7 +65,7 @@ namespace ASP.NETCoreWebAPIDemo.Controllers
             var code = SecurityCodeHelper.GetRandomEnDigitalText(4);
             byte[] imgByte = GenerateCaptcha(captchaOff, code);
             string base64Str = Convert.ToBase64String(imgByte);
-
+            CacheHelper.SetCache(uuid, code);   // 将验证码保存到缓存中
             var obj = new { captchaOff, uuid, img = base64Str };// File(stream, "image/png")
 
             return ToJson(1, obj);

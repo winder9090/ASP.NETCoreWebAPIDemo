@@ -26,8 +26,11 @@ namespace ASP.NETCoreWebAPIDemo
         {
             services.AddControllers();
 
-            //普通验证码
+            // 普通验证码
             services.AddHeiCaptcha();
+
+            // 添加内存缓存
+            services.AddMemoryCache();
 
             services.AddHttpContextAccessor();
 

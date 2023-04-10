@@ -35,6 +35,14 @@
             <param name="data"></param>
             <returns></returns>
         </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.Controllers.LoginController.Login(System.String,System.String,System.String,System.String)">
+            <summary>
+            登录
+            </summary>
+            <param name="name"></param>
+            <param name="pass"></param>
+            <returns></returns>
+        </member>
         <member name="M:ASP.NETCoreWebAPIDemo.Controllers.LoginController.CaptchaImage">
             <summary>
             生成图片验证码

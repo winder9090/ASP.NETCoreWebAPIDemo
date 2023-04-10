@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASP.NETCoreWebAPIDemo", "AS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{59AF5BB8-2A57-456A-9641-45CDDFFD1FF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{A512247B-E7E1-4DE1-9BCC-3279B52B41C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj", "{A512247B-E7E1-4DE1-9BCC-3279B52B41C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{6E880B1F-6BDC-4A53-8DD5-D28BA02ABA21}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{A512247B-E7E1-4DE1-9BCC-3279B52B41C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A512247B-E7E1-4DE1-9BCC-3279B52B41C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A512247B-E7E1-4DE1-9BCC-3279B52B41C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E880B1F-6BDC-4A53-8DD5-D28BA02ABA21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E880B1F-6BDC-4A53-8DD5-D28BA02ABA21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E880B1F-6BDC-4A53-8DD5-D28BA02ABA21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E880B1F-6BDC-4A53-8DD5-D28BA02ABA21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
