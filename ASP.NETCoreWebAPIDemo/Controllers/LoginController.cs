@@ -2,6 +2,7 @@
 using Common.Cache;
 using Hei.Captcha;
 using Infrastructure;
+using Infrastructure.CustomException;
 using Infrastructure.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -43,17 +44,18 @@ namespace ASP.NETCoreWebAPIDemo.Controllers
         public IActionResult Login(string name, string pass, string Code, string Uuid)
         {
             // 从缓存中读取验证码并验证输入的验证码
-            if (CacheHelper.Get(Uuid) is string str && !str.ToLower().Equals(Code.ToLower()))
+            string str = CacheHelper.Get(Uuid) as string;
+
+            if (str == null || !str.ToLower().Equals(Code.ToLower()))
             {
-                return ToResponse(103, "验证码错误");
+                return ToResponse(ResultCode.CAPTCHA_ERROR, "验证码错误");
             }
 
             User user = UserService.Login(name, pass);
 
-
             if (user == null)
             {
-                return ToResponse(105, "账号或密码错误");
+                return ToResponse(ResultCode.LOGIN_ERROR, "账号或密码错误");
             }
 
             LoginUser loginUser = new LoginUser();
