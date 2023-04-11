@@ -45,6 +45,7 @@ namespace ASP.NETCoreWebAPIDemo.Extension
                     var tempPath = hostEnvironment.ContentRootPath;
                     //添加文档注释
                     c.IncludeXmlComments(Path.Combine(tempPath, "ASP.NETCoreWebAPIDemo.xml"), true);
+                    c.IncludeXmlComments(Path.Combine(tempPath, "Model.xml"), true);
                     //c.IncludeXmlComments(Path.Combine(Directory.GetParent(tempPath).FullName, "ZR.Model", "ZRModel.xml"), true);
                 }
                 catch (Exception ex)
