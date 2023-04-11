@@ -103,6 +103,9 @@ namespace ASP.NETCoreWebAPIDemo
                 return next();
             });
 
+            //开启访问静态文件/wwwroot目录文件，要放在UseRouting前面
+            app.UseStaticFiles();
+
             //开启路由访问
             app.UseRouting();
 
