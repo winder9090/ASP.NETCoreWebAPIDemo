@@ -2,6 +2,7 @@ using ASP.NETCoreWebAPIDemo.Extension;
 using ASP.NETCoreWebAPIDemo.Framework;
 using Hei.Captcha;
 using Infrastructure;
+using Infrastructure.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -54,8 +55,13 @@ namespace ASP.NETCoreWebAPIDemo
                 o.TokenValidationParameters = JwtUtil.ValidParameters();
             });
 
+            services.AddAppService();
+
             // 注册Services服务
             services.AddSingleton(new AppSettings(Configuration));
+
+            //初始化db
+            DbExtension.AddDb(Configuration);
 
             // 设置跨域
             services.AddCors(options =>

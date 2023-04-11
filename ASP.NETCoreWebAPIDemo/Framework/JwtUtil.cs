@@ -87,8 +87,8 @@ namespace ASP.NETCoreWebAPIDemo.Framework
 
             var claims = new List<Claim>()
                 {
-                    new Claim(ClaimTypes.PrimarySid, user.UserId.ToString()),
-                    new Claim(ClaimTypes.Name, user.UserName),
+                    new Claim(ClaimTypes.PrimarySid, user.id.ToString()),
+                    new Claim(ClaimTypes.Name, user.username),
                     new Claim(ClaimTypes.UserData, JsonConvert.SerializeObject(user))
                 };
 

@@ -57,6 +57,12 @@
             <param name="code"></param>
             <returns></returns>
         </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.Extension.DbExtension.FilterData(System.Int32)">
+            <summary>
+            数据过滤
+            </summary>
+            <param name="configId">多库id</param>
+        </member>
         <member name="T:ASP.NETCoreWebAPIDemo.Extension.HttpContextExtension">
             <summary>
             HttpContext扩展类

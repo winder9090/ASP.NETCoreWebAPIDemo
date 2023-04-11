@@ -4,4 +4,8 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="SqlSugarCoreNoDrive" Version="5.1.4.66" />
+  </ItemGroup>
+
 </Project>

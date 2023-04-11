@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Model.System;
+using Service.System.IService;
 using System;
 
 namespace ASP.NETCoreWebAPIDemo.Controllers
@@ -20,12 +21,14 @@ namespace ASP.NETCoreWebAPIDemo.Controllers
         private readonly ILogger<LoginController> _logger;
         private readonly OptionsSetting jwtSettings;
         private readonly SecurityCodeHelper SecurityCodeHelper;
+        private readonly IUserService UserService;
 
-        public LoginController(ILogger<LoginController> logger, IOptions<OptionsSetting> jwtSettings, SecurityCodeHelper captcha)
+        public LoginController(ILogger<LoginController> logger, IOptions<OptionsSetting> jwtSettings, SecurityCodeHelper captcha, IUserService UserService)
         {
             _logger = logger;
             this.jwtSettings = jwtSettings.Value;
             SecurityCodeHelper = captcha;
+            this.UserService = UserService;
         }
 
         /// <summary>
@@ -38,15 +41,26 @@ namespace ASP.NETCoreWebAPIDemo.Controllers
         [HttpGet]
         public IActionResult Login(string name, string pass, string Code, string Uuid)
         {
-            LoginUser loginUser = new();
-            loginUser.UserId = 1;
-            loginUser.UserName = name;
-
             // 从缓存中读取验证码并验证输入的验证码
             if (CacheHelper.Get(Uuid) is string str && !str.ToLower().Equals(Code.ToLower()))
             {
                 return ToResponse(103, "验证码错误");
             }
+
+            User user = UserService.Login(name, pass);
+
+
+            if (user == null)
+            {
+                return ToResponse(105, "账号或密码错误");
+            }
+
+            LoginUser loginUser = new LoginUser();
+            loginUser.account = user.account;
+            loginUser.id = user.id;
+            loginUser.password = user.password;
+            loginUser.username = user.username;
+
 
             return SUCCESS(JwtUtil.GenerateJwtToken(JwtUtil.AddClaims(loginUser), jwtSettings.JwtSettings));
         }
