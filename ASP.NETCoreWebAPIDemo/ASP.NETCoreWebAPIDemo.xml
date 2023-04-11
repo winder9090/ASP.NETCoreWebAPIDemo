@@ -130,6 +130,24 @@
             </summary>
             <param name="app"></param>
         </member>
+        <member name="T:ASP.NETCoreWebAPIDemo.Filters.ActionPermissionFilter">
+            <summary>
+            API授权判断
+            </summary>
+        </member>
+        <member name="P:ASP.NETCoreWebAPIDemo.Filters.ActionPermissionFilter.Permission">
+            <summary>
+            权限字符串，例如 system:user:view
+            </summary>
+        </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.Filters.ActionPermissionFilter.OnActionExecutionAsync(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext,Microsoft.AspNetCore.Mvc.Filters.ActionExecutionDelegate)">
+            <summary>
+            执行Action前校验是否有权限访问
+            </summary>
+            <param name="context"></param>
+            <param name="next"></param>
+            <returns></returns>
+        </member>
         <member name="T:ASP.NETCoreWebAPIDemo.Filters.VerifyAttribute">
             <summary>
             授权校验访问

@@ -9,6 +9,7 @@ using Microsoft.Extensions.Options;
 using Model.System;
 using Service.System.IService;
 using System;
+using System.Collections.Generic;
 
 namespace ASP.NETCoreWebAPIDemo.Controllers
 {
@@ -61,6 +62,8 @@ namespace ASP.NETCoreWebAPIDemo.Controllers
             loginUser.password = user.password;
             loginUser.username = user.username;
 
+            // 测试 给固定的权限
+            loginUser.Permissions = new List<string> { "system:weatherforecast:query" };
 
             return SUCCESS(JwtUtil.GenerateJwtToken(JwtUtil.AddClaims(loginUser), jwtSettings.JwtSettings));
         }

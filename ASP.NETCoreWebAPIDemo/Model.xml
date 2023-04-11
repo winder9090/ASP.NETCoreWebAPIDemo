@@ -67,5 +67,10 @@
             登录用户信息存储
             </summary>
         </member>
+        <member name="P:Model.System.LoginUser.Permissions">
+            <summary>
+            权限集合
+            </summary>
+        </member>
     </members>
 </doc>

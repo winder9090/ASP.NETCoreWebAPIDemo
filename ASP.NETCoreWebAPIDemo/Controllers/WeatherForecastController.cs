@@ -26,6 +26,7 @@ namespace ASP.NETCoreWebAPIDemo.Controllers
 
         [Verify]
         [HttpGet]
+        [ActionPermissionFilter(Permission = "system:weatherforecast:query")]
         public IEnumerable<WeatherForecast> Get()
         {
             var rng = new Random();
