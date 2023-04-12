@@ -2,6 +2,7 @@
 using Common.Cache;
 using Hei.Captcha;
 using Infrastructure;
+using Infrastructure.Attribute;
 using Infrastructure.CustomException;
 using Infrastructure.Model;
 using Microsoft.AspNetCore.Mvc;
@@ -38,6 +39,7 @@ namespace ASP.NETCoreWebAPIDemo.Controllers
         /// <returns></returns>
         [Route("Login")] // 路由地址规则
         [HttpGet]
+        [Log(Title = "登录")]
         public IActionResult Login(string name, string pass, string Code, string Uuid)
         {
             // 从缓存中读取验证码并验证输入的验证码
