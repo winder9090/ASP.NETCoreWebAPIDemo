@@ -74,13 +74,8 @@ namespace ASP.NETCoreWebAPIDemo
                 o.TokenValidationParameters = JwtUtil.ValidParameters();
             });
 
-            services.AddAppService();
-
-            // 注册Services服务
-            services.AddSingleton(new AppSettings(Configuration));
-
-            //初始化db
-            DbExtension.AddDb(Configuration);
+            // 注入Services服务
+            InjectServices(services, Configuration);
 
             // Swagger
             services.AddSwaggerConfig();
@@ -137,6 +132,20 @@ namespace ASP.NETCoreWebAPIDemo
             {
                 endpoints.MapControllers();
             });
+        }
+
+        /// <summary>
+        /// 注入Services服务
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
+        private void InjectServices(IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddAppService();
+            services.AddSingleton(new AppSettings(configuration));
+
+            //初始化db
+            DbExtension.AddDb(configuration);
         }
     }
 }
