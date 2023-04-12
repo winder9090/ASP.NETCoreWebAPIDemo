@@ -1,5 +1,6 @@
 using ASP.NETCoreWebAPIDemo.Extension;
 using ASP.NETCoreWebAPIDemo.Framework;
+using ASP.NETCoreWebAPIDemo.Middleware;
 using Hei.Captcha;
 using Infrastructure;
 using Infrastructure.Extensions;
@@ -124,6 +125,9 @@ namespace ASP.NETCoreWebAPIDemo
             // 开启响应缓存中间件
             // 使用CORS中间件时，必须在UseResponseCaching之前调用UseCors。
             app.UseResponseCaching();
+
+            //使用全局异常中间件
+            app.UseMiddleware<GlobalExceptionMiddleware>();
 
             // HTTPS 重定向中间件 (UseHttpsRedirection) 将 HTTP 请求重定向到 HTTPS。
             app.UseHttpsRedirection();
