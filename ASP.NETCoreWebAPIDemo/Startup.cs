@@ -125,6 +125,10 @@ namespace ASP.NETCoreWebAPIDemo
             //2.再开启授权
             app.UseAuthorization();
 
+            // 开启响应缓存中间件
+            // 使用CORS中间件时，必须在UseResponseCaching之前调用UseCors。
+            app.UseResponseCaching();
+
             // HTTPS 重定向中间件 (UseHttpsRedirection) 将 HTTP 请求重定向到 HTTPS。
             app.UseHttpsRedirection();
 
