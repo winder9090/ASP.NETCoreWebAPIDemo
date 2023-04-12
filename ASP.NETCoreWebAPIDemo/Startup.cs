@@ -27,6 +27,22 @@ namespace ASP.NETCoreWebAPIDemo
         {
             services.AddControllers();
 
+            // 设置跨域
+            services.AddCors(options =>
+            {
+                // cors为策略名称，后面在web api控制器中添加的跨域策略名称要与此一致
+                options.AddPolicy("cors", builder =>
+                {
+                    builder
+                    .WithOrigins(new string[] { "http://10.10.10.82:7201", "http://localhost:3814",
+                        "http://localhost:41911", "http://localhost:8081" })  // 允许指定的域访问
+                    .AllowAnyHeader()       // 允许任何消息头
+                    .AllowAnyMethod()       // 允许任何 HTTP 方法
+                    .AllowCredentials();    // 允许跨源凭据
+                    // AllowAnyOrigin表示允许任何域；
+                });
+            });
+
             // 普通验证码
             services.AddHeiCaptcha();
 
@@ -34,9 +50,6 @@ namespace ASP.NETCoreWebAPIDemo
             services.AddMemoryCache();
 
             services.AddHttpContextAccessor();
-
-            // Swagger
-            services.AddSwaggerConfig();
 
             //绑定整个对象到Model上
             services.Configure<OptionsSetting>(Configuration);
@@ -63,21 +76,8 @@ namespace ASP.NETCoreWebAPIDemo
             //初始化db
             DbExtension.AddDb(Configuration);
 
-            // 设置跨域
-            services.AddCors(options =>
-            {
-                // cors为策略名称，后面在web api控制器中添加的跨域策略名称要与此一致
-                options.AddPolicy("cors", builder =>
-                {
-                    builder
-                    .WithOrigins(new string[] { "http://10.10.10.82:7201", "http://localhost:3814",
-                        "http://localhost:41911", "http://localhost:8081" })  // 允许指定的域访问
-                    .AllowAnyHeader()       // 允许任何消息头
-                    .AllowAnyMethod()       // 允许任何 HTTP 方法
-                    .AllowCredentials();    // 允许跨源凭据
-                    // AllowAnyOrigin表示允许任何域；
-                });
-            });
+            // Swagger
+            services.AddSwaggerConfig();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
