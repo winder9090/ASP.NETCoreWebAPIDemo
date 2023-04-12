@@ -15,7 +15,7 @@ namespace ASP.NETCoreWebAPIDemo.Filters
     /// </summary>
     public class ActionPermissionFilter : ActionFilterAttribute//, IAsyncActionFilter
     {
-        //private NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+        private NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
 
         /// <summary>
         /// 权限字符串，例如 system:user:view
@@ -70,7 +70,7 @@ namespace ASP.NETCoreWebAPIDemo.Filters
                 }
                 if (!HasPermi && !Permission.Equals("common"))
                 {
-                    //logger.Info($"用户{info.username}没有权限访问{url}，当前权限[{Permission}]");
+                    logger.Info($"用户{info.username}没有权限访问{url}，当前权限[{Permission}]");
                     JsonResult result = new(new ApiResult()
                     {
                         Code = (int)ResultCode.FORBIDDEN,

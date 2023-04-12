@@ -5,7 +5,6 @@ using Infrastructure;
 using Infrastructure.CustomException;
 using Infrastructure.Model;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Model.System;
 using Service.System.IService;
@@ -20,14 +19,12 @@ namespace ASP.NETCoreWebAPIDemo.Controllers
     [Route("[controller]")]
     public class LoginController : BaseController
     {
-        private readonly ILogger<LoginController> _logger;
         private readonly OptionsSetting jwtSettings;
         private readonly SecurityCodeHelper SecurityCodeHelper;
         private readonly IUserService UserService;
 
-        public LoginController(ILogger<LoginController> logger, IOptions<OptionsSetting> jwtSettings, SecurityCodeHelper captcha, IUserService UserService)
+        public LoginController(IOptions<OptionsSetting> jwtSettings, SecurityCodeHelper captcha, IUserService UserService)
         {
-            _logger = logger;
             this.jwtSettings = jwtSettings.Value;
             SecurityCodeHelper = captcha;
             this.UserService = UserService;

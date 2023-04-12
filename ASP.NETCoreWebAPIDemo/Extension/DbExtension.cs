@@ -8,6 +8,7 @@ namespace ASP.NETCoreWebAPIDemo.Extension
 {
     public static class DbExtension
     {
+        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         //全部数据权限
         public static string DATA_SCOPE_ALL = "1";
         //自定数据权限
@@ -60,18 +61,18 @@ namespace ASP.NETCoreWebAPIDemo.Extension
             db.GetConnectionScope(configId).Aop.OnLogExecuting = (sql, pars) =>
             {
                 string log = $"【db{configId} SQL语句】{UtilMethods.GetSqlString(config.DbType, sql, pars)}\n";
-                //if (sql.StartsWith("UPDATE", StringComparison.OrdinalIgnoreCase) || sql.StartsWith("INSERT", StringComparison.OrdinalIgnoreCase))
-                //    logger.Warn(log);
-                //else if (sql.StartsWith("DELETE", StringComparison.OrdinalIgnoreCase) || sql.StartsWith("TRUNCATE", StringComparison.OrdinalIgnoreCase))
-                //    logger.Error(log);
-                //else
-                //    logger.Info(log);
+                if (sql.StartsWith("UPDATE", StringComparison.OrdinalIgnoreCase) || sql.StartsWith("INSERT", StringComparison.OrdinalIgnoreCase))
+                    logger.Warn(log);
+                else if (sql.StartsWith("DELETE", StringComparison.OrdinalIgnoreCase) || sql.StartsWith("TRUNCATE", StringComparison.OrdinalIgnoreCase))
+                    logger.Error(log);
+                else
+                    logger.Info(log);
             };
 
             db.GetConnectionScope(configId).Aop.OnError = (e) =>
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                //logger.Error(e, $"执行SQL出错：{e.Message}");
+                logger.Error(e, $"执行SQL出错：{e.Message}");
             };
         }
 

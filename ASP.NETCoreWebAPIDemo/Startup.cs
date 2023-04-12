@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NLog;
 
 namespace ASP.NETCoreWebAPIDemo
 {
@@ -20,11 +21,15 @@ namespace ASP.NETCoreWebAPIDemo
             Configuration = configuration;
         }
 
+        static readonly Logger logger = LogManager.GetCurrentClassLogger();
+
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            logger.Info("项目启动");
+
             services.AddControllers();
 
             // 设置跨域

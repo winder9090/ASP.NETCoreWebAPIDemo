@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Model.System;
+using NLog;
 using System;
 using System.Linq;
 
@@ -18,12 +19,7 @@ namespace ASP.NETCoreWebAPIDemo.Filters
     /// </summary>
     public class VerifyAttribute : Attribute, IAuthorizationFilter
     {
-        //private readonly ILogger<VerifyAttribute> _logger;
-
-        //public VerifyAttribute(ILogger<VerifyAttribute> logger)
-        //{
-        //    _logger = logger;
-        //}
+        static readonly Logger logger = LogManager.GetCurrentClassLogger();
 
         /// <summary>
         /// 只判断token是否正确，不判断权限
@@ -55,7 +51,7 @@ namespace ASP.NETCoreWebAPIDemo.Filters
             if (info == null || !isAuthed)
             {
                 string msg = $"请求访问[{url}]失败，无法访问系统资源";
-                //logger.Info($"{msg}");
+                logger.Info($"{msg}");
 
                 context.Result = new JsonResult(new ApiResult((int)ResultCode.DENY, msg));
             }
