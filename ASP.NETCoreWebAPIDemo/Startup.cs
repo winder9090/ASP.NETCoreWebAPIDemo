@@ -28,8 +28,6 @@ namespace ASP.NETCoreWebAPIDemo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            logger.Info("项目启动");
-
             services.AddControllers();
 
             // 设置跨域
@@ -55,6 +53,9 @@ namespace ASP.NETCoreWebAPIDemo
             services.AddMemoryCache();
 
             services.AddHttpContextAccessor();
+
+            // 显示logo
+            services.AddLogo();
 
             //绑定整个对象到Model上
             services.Configure<OptionsSetting>(Configuration);
