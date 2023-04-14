@@ -3,6 +3,7 @@ using Model;
 using Model.Models;
 using Repository;
 using Service.Models.IService;
+using System.Collections.Generic;
 
 namespace Service.Models
 {
@@ -25,5 +26,11 @@ namespace Service.Models
             return lDepartment.ToPage(pager);
         }
 
+
+        public List<department> GetDepartmentList()
+        {
+            var lDepartment = Queryable().OrderBy(it => it.id).ToList();
+            return lDepartment;
+        }
     }
 }

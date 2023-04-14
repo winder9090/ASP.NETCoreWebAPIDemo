@@ -21,5 +21,14 @@ namespace ASP.NETCoreWebAPIDemo.Controllers
             var list = DepartmentService.GetDepartmentList(pagerInfo);
             return SUCCESS(list);
         }
+
+        [HttpGet("export")]
+        public IActionResult Export()
+        {
+            var list = DepartmentService.GetDepartmentList();
+
+            string sFileName = ExportExcel(list, "Department", "单位信息");
+            return SUCCESS(new { path = "/export/" + sFileName, fileName = sFileName });
+        }
     }
 }

@@ -20,6 +20,14 @@
             <param name="timeFormatStr"></param>
             <returns></returns>
         </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.Controllers.BaseController.ExportExcel(System.String,System.String)">
+            <summary>
+            导出Excel
+            </summary>
+            <param name="path">完整文件路径</param>
+            <param name="fileName">带扩展文件名</param>
+            <returns></returns>
+        </member>
         <member name="M:ASP.NETCoreWebAPIDemo.Controllers.BaseController.ToJson(System.Int64)">
             <summary>
             响应返回结果
@@ -33,6 +41,33 @@
             </summary>
             <param name="resultCode"></param>
             <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.Controllers.BaseController.ExportExcel``1(System.Collections.Generic.List{``0},System.String,System.String)">
+            <summary>
+            导出Excel
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"></param>
+            <param name="sheetName"></param>
+            <param name="fileName"></param>
+        </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.Controllers.BaseController.ExportExcelMini(System.Collections.Generic.Dictionary{System.String,System.Object},System.String)">
+            <summary>
+            导出多个工作表(Sheet)
+            </summary>
+            <param name="sheets"></param>
+            <param name="fileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.Controllers.BaseController.DownloadImportTemplate``1(System.Collections.Generic.List{``0},System.IO.Stream,System.String)">
+            <summary>
+            下载导入模板
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"></param>
+            <param name="stream"></param>
+            <param name="fileName">下载文件名</param>
             <returns></returns>
         </member>
         <member name="M:ASP.NETCoreWebAPIDemo.Controllers.LoginController.Login(System.String,System.String,System.String,System.String)">
