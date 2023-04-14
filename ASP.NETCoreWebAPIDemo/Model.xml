@@ -4,6 +4,16 @@
         <name>Model</name>
     </assembly>
     <members>
+        <member name="P:Model.Models.department.id">
+            <summary>
+            编号
+            </summary>
+        </member>
+        <member name="P:Model.Models.department.departmentName">
+            <summary>
+            单位名称
+            </summary>
+        </member>
         <member name="T:Model.PagedInfo`1">
             <summary>
             分页参数

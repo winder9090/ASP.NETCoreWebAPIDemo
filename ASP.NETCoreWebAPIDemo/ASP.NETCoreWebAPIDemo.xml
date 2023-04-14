@@ -148,6 +148,20 @@
             <param name="next"></param>
             <returns></returns>
         </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.Filters.GlobalActionMonitor.OnActionExecutionAsync(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext,Microsoft.AspNetCore.Mvc.Filters.ActionExecutionDelegate)">
+            <summary>
+            Action请求前
+            </summary>
+            <param name="context"></param>
+            <param name="next"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.Filters.GlobalActionMonitor.OnResultExecuted(Microsoft.AspNetCore.Mvc.Filters.ResultExecutedContext)">
+            <summary>
+            OnActionExecuted是在Action中的代码执行之后运行的方法。
+            </summary>
+            <param name="context"></param>
+        </member>
         <member name="T:ASP.NETCoreWebAPIDemo.Filters.VerifyAttribute">
             <summary>
             授权校验访问

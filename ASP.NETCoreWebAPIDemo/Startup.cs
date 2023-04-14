@@ -1,4 +1,5 @@
 using ASP.NETCoreWebAPIDemo.Extension;
+using ASP.NETCoreWebAPIDemo.Filters;
 using ASP.NETCoreWebAPIDemo.Framework;
 using ASP.NETCoreWebAPIDemo.Middleware;
 using Hei.Captcha;
@@ -29,7 +30,10 @@ namespace ASP.NETCoreWebAPIDemo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers(options =>
+            {
+                options.Filters.Add(typeof(GlobalActionMonitor));//È«¾Ö×¢²á
+            });
 
             // ÉèÖÃ¿çÓò
             services.AddCors(options =>
