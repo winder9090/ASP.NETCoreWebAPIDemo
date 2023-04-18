@@ -252,6 +252,37 @@
             <param name="jwtToken"></param>
             <returns></returns>
         </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.Hubs.MessageHub.OnConnectedAsync">
+            <summary>
+            客户端连接的时候调用
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.Hubs.MessageHub.OnDisconnectedAsync(System.Exception)">
+            <summary>
+            连接终止时调用。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.Hubs.MessageHub.SendMessage(System.String,System.String,System.String)">
+            <summary>
+            注册信息
+            </summary>
+            <param name="connectId"></param>
+            <param name="userName"></param>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="P:ASP.NETCoreWebAPIDemo.Hubs.OnlineUsers.ConnnectionId">
+            <summary>
+            客户端连接Id
+            </summary>
+        </member>
+        <member name="P:ASP.NETCoreWebAPIDemo.Hubs.OnlineUsers.Userid">
+            <summary>
+            用户id
+            </summary>
+        </member>
         <!-- Badly formed XML comment ignored for member "T:ASP.NETCoreWebAPIDemo.Middleware.GlobalExceptionMiddleware" -->
         <member name="M:ASP.NETCoreWebAPIDemo.Startup.InjectServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
             <summary>

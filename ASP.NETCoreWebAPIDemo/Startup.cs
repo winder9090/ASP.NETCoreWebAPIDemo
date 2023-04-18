@@ -1,6 +1,7 @@
 using ASP.NETCoreWebAPIDemo.Extension;
 using ASP.NETCoreWebAPIDemo.Filters;
 using ASP.NETCoreWebAPIDemo.Framework;
+using ASP.NETCoreWebAPIDemo.Hubs;
 using ASP.NETCoreWebAPIDemo.Middleware;
 using Common.Cache;
 using Hei.Captcha;
@@ -31,7 +32,7 @@ namespace ASP.NETCoreWebAPIDemo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers(options =>
+            services.AddMvc(options =>
             {
                 options.Filters.Add(typeof(GlobalActionMonitor));//全局注册
             });
@@ -50,6 +51,15 @@ namespace ASP.NETCoreWebAPIDemo
                     .AllowCredentials();    // 允许跨源凭据
                     // AllowAnyOrigin表示允许任何域；
                 });
+            });
+
+            //注入SignalR实时通讯，默认用json传输
+            services.AddSignalR(options =>
+            {
+                //客户端发保持连接请求到服务端最长间隔，默认30秒，改成4分钟，网页需跟着设置connection.keepAliveIntervalInMilliseconds = 12e4;即2分钟
+                //options.ClientTimeoutInterval = TimeSpan.FromMinutes(4);
+                //服务端发保持连接请求到客户端间隔，默认15秒，改成2分钟，网页需跟着设置connection.serverTimeoutInMilliseconds = 24e4;即4分钟
+                //options.KeepAliveInterval = TimeSpan.FromMinutes(2);
             });
 
             // 普通验证码
@@ -139,6 +149,9 @@ namespace ASP.NETCoreWebAPIDemo
 
             app.UseEndpoints(endpoints =>
             {
+                //设置socket连接
+                endpoints.MapHub<MessageHub>("/msgHub");
+
                 endpoints.MapControllers();
             });
         }

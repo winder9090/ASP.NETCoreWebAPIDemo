@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>SignalR WebSocket示例</title>
+    <!-- 引入SignalR的JavaScript库 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/5.0.10/signalr.min.js"></script>
+</head>
+<body>
+    <h1>SignalR WebSocket示例</h1>
+    <input type="text" id="userInput" placeholder="请输入用户名" /><br />
+    <input type="text" id="messageInput" placeholder="请输入消息" /><br />
+    <button id="sendButton">发送</button>
+    <hr />
+    <div id="messagesList"></div>
+
+    <script>
+        // 创建SignalR连接对象
+        var connection = new signalR.HubConnectionBuilder()
+            .withUrl("/msgHub")
+            .configureLogging(signalR.LogLevel.Information)
+            .build();
+
+        // 开启连接
+        connection.start().then(function () {
+            console.log("SignalR连接成功");
+        }).catch(function (err) {
+            console.error(err.toString());
+        });
+
+        // 接收服务器发送的消息
+        connection.on("ReceiveMessage", function (user, message) {
+            var messagesList = document.getElementById("messagesList");
+            messagesList.innerHTML += "<p><strong>" + user + "</strong>: " + message + "</p>";
+        });
+
+        // 发送消息到服务器
+        document.getElementById("sendButton").addEventListener("click", function (event) {
+            var user = document.getElementById("userInput").value;
+            var message = document.getElementById("messageInput").value;
+            connection.invoke("SendMessage", user, message).catch(function (err) {
+                console.error(err.toString());
+            });
+            event.preventDefault();
+        });
+    </script>
+</body>
+</html>
