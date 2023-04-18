@@ -2,6 +2,7 @@ using ASP.NETCoreWebAPIDemo.Extension;
 using ASP.NETCoreWebAPIDemo.Filters;
 using ASP.NETCoreWebAPIDemo.Framework;
 using ASP.NETCoreWebAPIDemo.Middleware;
+using Common.Cache;
 using Hei.Captcha;
 using Infrastructure;
 using Infrastructure.Extensions;
@@ -154,6 +155,13 @@ namespace ASP.NETCoreWebAPIDemo
 
             //初始化db
             DbExtension.AddDb(configuration);
+
+            //注册REDIS 服务
+            var openRedis = configuration["RedisServer:open"];
+            if (openRedis == "1")
+            {
+                RedisServer.Initalize();
+            }
         }
     }
 }
