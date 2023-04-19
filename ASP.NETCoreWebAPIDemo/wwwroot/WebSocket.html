@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h1>使用WebSocket连接（对接）asp.net core SignalR示例</h1>
+    <input type="text" id="userInput" placeholder="请输入用户名" /><br />
+    <input type="text" id="messageInput" placeholder="请输入消息" /><br />
+    <button id="sendButton">发送</button>
+    <hr />
+    <div id="messagesList"></div>
+
+    <script>
+        var connection = new WebSocket("wss://localhost:5001/msgHub");
+        connection.onopen = (event) => {
+            // console.log(event);
+            connection.send(`{"protocol":"json", "version":1}${String.fromCharCode(0x1e)}`);
+        }
+
+        connection.onmessage = (event) => {
+
+            var msg = event.data.replace(String.fromCharCode(0x1e), ""); //替换消息结束符
+
+            console.log(`received message: ${msg}`);
+
+            let eventData = JSON.parse(msg);
+
+            if (eventData.type === 1 && eventData.target) { // type为1表示调用客户端的某一个方法
+                //let func: (...args: any[]) => any = callbacks[eventData.target];
+
+                //if (func !== undefined) {
+                //    func(...eventData.arguments);
+                //}
+
+            }
+
+        }
+
+        // 发送消息到服务器
+        document.getElementById("sendButton").addEventListener("click", function (event) {
+            var user = document.getElementById("userInput").value;
+            var message = document.getElementById("messageInput").value;
+            var connectId = "1";
+            invokeMethod("SendMessage", [connectId,user,message]);
+        });
+
+        function invokeMethod(methodName , args ) {
+
+            // type为1表示调用远程的方法(一个 RPC 调用)，target为要调用的方法名称，arguments为要调用的方法的参数
+            connection.send(`${JSON.stringify({
+                arguments: args,
+                target: methodName,
+                type: 1,
+            })}${String.fromCharCode(0x1e)}`);
+
+            return Promise.resolve();
+
+        }
+    </script>
+</body>
+</html>
