@@ -57,11 +57,12 @@
         function invokeMethod(methodName, args) {
 
             // type为1表示调用远程的方法(一个 RPC 调用)，target为要调用的方法名称，arguments为要调用的方法的参数
+            // signalr 发送的消息均以 0x1e 这个字符结尾，在发送消息的时候需要在消息的最后增加 0x1e 字符
             connection.send(`${JSON.stringify({
                 arguments: args,
                 target: methodName,
                 type: 1,
-            })}${String.fromCharCode(0x1e)}`);
+            })}${String.fromCharCode(0x1e)}`); 
 
             return Promise.resolve();
 
