@@ -4,10 +4,11 @@
     <meta charset="utf-8" />
     <title>SignalR WebSocket示例</title>
     <!-- 引入SignalR的JavaScript库 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/5.0.10/signalr.min.js"></script>
+    <script src="signalr.min.js"></script>
 </head>
 <body>
     <h1>SignalR WebSocket示例</h1>
+    <input type="text" id="ConnnectionId" placeholder="请输入ConnnectionId" /><br />
     <input type="text" id="userInput" placeholder="请输入用户名" /><br />
     <input type="text" id="messageInput" placeholder="请输入消息" /><br />
     <button id="sendButton">发送</button>
@@ -29,16 +30,24 @@
         });
 
         // 接收服务器发送的消息
-        connection.on("ReceiveMessage", function (user, message) {
+        connection.on("welcome", function (eventData) {
             var messagesList = document.getElementById("messagesList");
-            messagesList.innerHTML += "<p><strong>" + user + "</strong>: " + message + "</p>";
+            messagesList.innerHTML += "<p><strong>" + eventData.connectionId + "</strong>: " + eventData.now + "</p>";
+
+            document.getElementById("ConnnectionId").value = eventData.connectionId;
+        });
+
+        connection.on("receiveChat", function (eventData) {
+            var messagesList = document.getElementById("messagesList");
+            messagesList.innerHTML += "<p><strong>" + eventData.userName + "</strong>: " + eventData.message + "</p>";
         });
 
         // 发送消息到服务器
         document.getElementById("sendButton").addEventListener("click", function (event) {
             var user = document.getElementById("userInput").value;
             var message = document.getElementById("messageInput").value;
-            connection.invoke("SendMessage","1", user, message).catch(function (err) {
+            var connectId = document.getElementById("ConnnectionId").value;
+            connection.invoke("SendMessage", connectId, user, message).catch(function (err) {
                 console.error(err.toString());
             });
             event.preventDefault();

@@ -42,6 +42,12 @@ namespace ASP.NETCoreWebAPIDemo.Hubs
                 Clients.All.SendAsync("welcome", $"欢迎您：{name},当前时间：{DateTime.Now}");
                 logger.Info($"欢迎您：{name},当前时间：{DateTime.Now}");
             }
+            else
+            {
+                Clients.All.SendAsync("welcome", new { Context.ConnectionId, DateTime.Now });
+
+            }
+
 
             return base.OnConnectedAsync();
         }

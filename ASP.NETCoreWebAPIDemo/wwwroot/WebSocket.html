@@ -6,6 +6,7 @@
 </head>
 <body>
     <h1>使用WebSocket连接（对接）asp.net core SignalR示例</h1>
+    <input type="text" id="ConnnectionId" placeholder="请输入ConnnectionId" /><br />
     <input type="text" id="userInput" placeholder="请输入用户名" /><br />
     <input type="text" id="messageInput" placeholder="请输入消息" /><br />
     <button id="sendButton">发送</button>
@@ -33,7 +34,13 @@
                 //if (func !== undefined) {
                 //    func(...eventData.arguments);
                 //}
-
+                if (eventData.target == "welcome") {
+                    document.getElementById("ConnnectionId").value = eventData.arguments[0].connectionId;
+                    messagesList.innerHTML += "<p><strong>" + eventData.arguments[0].connectionId + "</strong>: " + eventData.arguments[0].now + "</p>";
+                }
+                else if (eventData.target == "receiveChat") {
+                    messagesList.innerHTML += "<p><strong>" + eventData.arguments[0].userName + "</strong>: " + eventData.arguments[0].message + "</p>";
+                }
             }
 
         }
@@ -42,11 +49,12 @@
         document.getElementById("sendButton").addEventListener("click", function (event) {
             var user = document.getElementById("userInput").value;
             var message = document.getElementById("messageInput").value;
-            var connectId = "1";
-            invokeMethod("SendMessage", [connectId,user,message]);
+            var connectId = document.getElementById("ConnnectionId").value;
+            
+            invokeMethod("SendMessage", [connectId, user, message]);
         });
 
-        function invokeMethod(methodName , args ) {
+        function invokeMethod(methodName, args) {
 
             // type为1表示调用远程的方法(一个 RPC 调用)，target为要调用的方法名称，arguments为要调用的方法的参数
             connection.send(`${JSON.stringify({
