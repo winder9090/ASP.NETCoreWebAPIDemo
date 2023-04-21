@@ -1,6 +1,7 @@
 using Infrastructure.Startups;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using NLog.Web;
 
 namespace ASP.NETCoreWebAPIDemo
 {
@@ -17,6 +18,7 @@ namespace ASP.NETCoreWebAPIDemo
                 {
                     webBuilder
                     .Init("Infrastructure")
+                    .UseNLog()
                     .UseStartup<Startup>();
                 });
     }
