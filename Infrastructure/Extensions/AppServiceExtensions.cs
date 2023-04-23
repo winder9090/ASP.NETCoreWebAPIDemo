@@ -15,7 +15,7 @@ namespace Infrastructure.Extensions
         {
             //var assemblies = AppDomain.CurrentDomain.GetAssemblies();
 
-            string[] cls = new string[] { "Repository", "Service" };
+            string[] cls = new string[] { "Repository", "Service", "Tasks" };
             foreach (var item in cls)
             {
                 Assembly assembly = Assembly.Load(item);

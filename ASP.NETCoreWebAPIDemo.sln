@@ -9,11 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastru
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj", "{A512247B-E7E1-4DE1-9BCC-3279B52B41C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{6E880B1F-6BDC-4A53-8DD5-D28BA02ABA21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{6E880B1F-6BDC-4A53-8DD5-D28BA02ABA21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{3A2F43DC-DD5A-46FC-8FE9-C8BE7DACEF09}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Repository.csproj", "{3A2F43DC-DD5A-46FC-8FE9-C8BE7DACEF09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{738A7283-659B-42BE-8BB7-3C57E8CFE018}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service", "Service\Service.csproj", "{738A7283-659B-42BE-8BB7-3C57E8CFE018}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tasks", "Tasks\Tasks.csproj", "{99ACEEF8-5F63-4AC1-AAEF-ED477E4D249D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{738A7283-659B-42BE-8BB7-3C57E8CFE018}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{738A7283-659B-42BE-8BB7-3C57E8CFE018}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{738A7283-659B-42BE-8BB7-3C57E8CFE018}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99ACEEF8-5F63-4AC1-AAEF-ED477E4D249D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99ACEEF8-5F63-4AC1-AAEF-ED477E4D249D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99ACEEF8-5F63-4AC1-AAEF-ED477E4D249D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99ACEEF8-5F63-4AC1-AAEF-ED477E4D249D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

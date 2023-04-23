@@ -141,6 +141,9 @@ namespace ASP.NETCoreWebAPIDemo
             // 使用CORS中间件时，必须在UseResponseCaching之前调用UseCors。
             app.UseResponseCaching();
 
+            //恢复/启动任务
+            app.UseAddTaskSchedulers();
+
             //使用全局异常中间件
             app.UseMiddleware<GlobalExceptionMiddleware>();
 
@@ -165,6 +168,9 @@ namespace ASP.NETCoreWebAPIDemo
         {
             services.AddAppService();
             services.AddSingleton(new AppSettings(configuration));
+
+            //开启计划任务
+            services.AddTaskSchedulers();
 
             //初始化db
             DbExtension.AddDb(configuration);

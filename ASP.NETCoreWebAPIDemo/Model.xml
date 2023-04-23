@@ -82,5 +82,185 @@
             权限集合
             </summary>
         </member>
+        <member name="T:Model.System.SysTasks">
+            <summary>
+            计划任务
+            </summary>
+        </member>
+        <member name="P:Model.System.SysTasks.ID">
+            <summary>
+            描述 : 任务id 
+            空值 : False
+            默认 : 
+            </summary>
+        </member>
+        <member name="P:Model.System.SysTasks.Name">
+            <summary>
+            描述 : 任务名称 
+            空值 : False
+            默认 : 
+            </summary>
+        </member>
+        <member name="P:Model.System.SysTasks.JobGroup">
+            <summary>
+            描述 : 任务分组 
+            空值 : False
+            默认 : 
+            </summary>
+        </member>
+        <member name="P:Model.System.SysTasks.Cron">
+            <summary>
+            描述 : 运行时间表达式 
+            空值 : False
+            默认 : 
+            </summary>
+        </member>
+        <member name="P:Model.System.SysTasks.AssemblyName">
+            <summary>
+            描述 : 程序集名称 
+            空值 : False
+            默认 : 
+            </summary>
+        </member>
+        <member name="P:Model.System.SysTasks.ClassName">
+            <summary>
+            描述 : 任务所在类 
+            空值 : False
+            默认 : 
+            </summary>
+        </member>
+        <member name="P:Model.System.SysTasks.Remark">
+            <summary>
+            描述 : 任务描述 
+            空值 : True
+            默认 : 
+            </summary>
+        </member>
+        <member name="P:Model.System.SysTasks.RunTimes">
+            <summary>
+            描述 : 执行次数 
+            空值 : False
+            默认 : 0
+            </summary>
+        </member>
+        <member name="P:Model.System.SysTasks.BeginTime">
+            <summary>
+            描述 : 开始时间 
+            空值 : True
+            默认 : 
+            </summary>
+        </member>
+        <member name="P:Model.System.SysTasks.EndTime">
+            <summary>
+            描述 : 结束时间 
+            空值 : True
+            默认 : 
+            </summary>
+        </member>
+        <member name="P:Model.System.SysTasks.TriggerType">
+            <summary>
+            描述 : 触发器类型（0、simple 1、cron） 
+            空值 : False
+            默认 : 1
+            </summary>
+        </member>
+        <member name="P:Model.System.SysTasks.IntervalSecond">
+            <summary>
+            描述 : 执行间隔时间(单位:秒) 
+            空值 : False
+            默认 : 0
+            </summary>
+        </member>
+        <member name="P:Model.System.SysTasks.IsStart">
+            <summary>
+            描述 : 是否启动 
+            空值 : False
+            默认 : 0
+            </summary>
+        </member>
+        <member name="P:Model.System.SysTasks.JobParams">
+            <summary>
+            描述 : 传入参数 
+            空值 : True
+            默认 : 
+            </summary>
+        </member>
+        <member name="P:Model.System.SysTasks.Create_time">
+            <summary>
+            描述 : 创建时间 
+            空值 : False
+            默认 : 
+            </summary>
+        </member>
+        <member name="P:Model.System.SysTasks.LastRunTime">
+            <summary>
+            最后运行时间
+            </summary>
+        </member>
+        <member name="P:Model.System.SysTasks.ApiUrl">
+            <summary>
+            api执行地址
+            </summary>
+        </member>
+        <member name="P:Model.System.SysTasks.TaskType">
+            <summary>
+            任务类型 1、程序集 2、网络请求 3、SQL语句
+            </summary>
+        </member>
+        <member name="P:Model.System.SysTasks.SqlText">
+            <summary>
+            SQL语句
+            </summary>
+        </member>
+        <member name="P:Model.System.SysTasks.RequestMethod">
+            <summary>
+            网络请求方式
+            </summary>
+        </member>
+        <member name="T:Model.System.SysTasksLog">
+            <summary>
+            任务日志
+            </summary>
+        </member>
+        <member name="P:Model.System.SysTasksLog.JobLogId">
+            <summary>
+            日志Id
+            </summary>
+        </member>
+        <member name="P:Model.System.SysTasksLog.JobId">
+            <summary>
+            任务Id
+            </summary>
+        </member>
+        <member name="P:Model.System.SysTasksLog.Status">
+            <summary>
+            执行状态（0正常 1失败）
+            </summary>
+        </member>
+        <member name="P:Model.System.SysTasksLog.Exception">
+            <summary>
+            异常
+            </summary>
+        </member>
+        <member name="P:Model.System.SysTasksLog.JobMessage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Model.System.SysTasksLog.InvokeTarget">
+            <summary>
+            调用目标字符串
+            </summary>
+        </member>
+        <member name="P:Model.System.SysTasksLog.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Model.System.SysTasksLog.Elapsed">
+            <summary>
+            执行用时，毫秒
+            </summary>
+        </member>
     </members>
 </doc>

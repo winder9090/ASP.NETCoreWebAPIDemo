@@ -165,6 +165,18 @@
             </summary>
             <param name="app"></param>
         </member>
+        <member name="T:ASP.NETCoreWebAPIDemo.Extension.TasksExtension">
+            <summary>
+            定时任务扩展方法
+            </summary>
+        </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.Extension.TasksExtension.UseAddTaskSchedulers(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            程序启动后添加任务计划
+            </summary>
+            <param name="app"></param>
+            <returns></returns>
+        </member>
         <member name="T:ASP.NETCoreWebAPIDemo.Filters.ActionPermissionFilter">
             <summary>
             API授权判断
