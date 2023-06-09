@@ -168,6 +168,7 @@ namespace ASP.NETCoreWebAPIDemo
         {
             services.AddAppService();
             services.AddSingleton(new AppSettings(configuration));
+            services.AddHostedService<SyncServer>();     // 注册类
 
             //开启计划任务
             services.AddTaskSchedulers();
