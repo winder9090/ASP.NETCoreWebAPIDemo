@@ -8,6 +8,12 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY ["ASP.NETCoreWebAPIDemo/ASP.NETCoreWebAPIDemo.csproj", "ASP.NETCoreWebAPIDemo/"]
+COPY ["Service/Service.csproj", "Service/"]
+COPY ["Model/Model.csproj", "Model/"]
+COPY ["Repository/Repository.csproj", "Repository/"]
+COPY ["Infrastructure/Infrastructure.csproj", "Infrastructure/"]
+COPY ["Common/Common.csproj", "Common/"]
+COPY ["Tasks/Tasks.csproj", "Tasks/"]
 RUN dotnet restore "ASP.NETCoreWebAPIDemo/ASP.NETCoreWebAPIDemo.csproj"
 COPY . .
 WORKDIR "/src/ASP.NETCoreWebAPIDemo"
