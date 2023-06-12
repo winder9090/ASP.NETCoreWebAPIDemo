@@ -10,6 +10,10 @@
     <DocumentationFile>D:\Git\ASP.NETCoreWebAPIDemo\ASP.NETCoreWebAPIDemo\ASP.NETCoreWebAPIDemo.xml</DocumentationFile>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>D:\Git\ASP.NETCoreWebAPIDemo\ASP.NETCoreWebAPIDemo\ASP.NETCoreWebAPIDemo.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Hei.Captcha" Version="0.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.17" />
