@@ -1,0 +1,28 @@
+/* 全局样式表 */
+html,
+body,
+#app {
+  /* 高度占100% */
+  height: 100%;
+  /* margin重置为0 */
+  margin: 0;
+  /* padding重置为0 */
+  padding: 0;
+}
+
+.el-breadcrumb {
+  /* 设置下拉距 */
+  margin-bottom: 15px;
+  /* 重置字体大小 */
+  font-size: 12px;
+}
+
+.el-card {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15) !important;
+}
+
+.el-table {
+  margin-top: 15px;
+  font-size: 12px;
+}
+    
