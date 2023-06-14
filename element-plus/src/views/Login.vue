@@ -35,7 +35,7 @@
 <script>
     export default{
         setup (){
-             window.sessionStorage.clear()
+            window.sessionStorage.clear()
         },
         data() {
             return{
