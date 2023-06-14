@@ -41,7 +41,7 @@
                     <el-menu :default-openeds="['1']" router background-color="#333744" text-color="#fff"
                         active-text-color="#409eff" :unique-opened="true" :collapse="isCollapse"
                         :collapse-transition="false">
-                        <el-submenu index="1">
+                        <el-sub-menu index="1">
                             <!-- 一级菜单模板区域 -->
                             <template v-slot:title>
                                 <!-- 图标 -->
@@ -51,68 +51,15 @@
                             </template>
 
                             <!-- 二级菜单 -->
-                            <el-submenu index="2">
+                            <el-sub-menu index="2">
                                 <!-- 二级菜单模板区域 -->
                                 <template v-slot:title>
                                     <i class="el-icon-user"></i>
-                                    用户管理
+                                    Basic 基础组件
                                 </template>
-                                <el-menu-item index="/Demo/Users"> <i class="el-icon-user"></i>用户列表</el-menu-item>
-                            </el-submenu>
-
-                            <!-- 二级菜单 -->
-                            <el-submenu index="3">
-                                <!-- 二级菜单模板区域 -->
-                                <template v-slot:title>
-                                    <el-icon>
-                                        <Menu />
-                                    </el-icon>
-                                    <span>测试页面</span>
-                                </template>
-                                <el-menu-item index="/Demo/NowTime"> <i class="el-icon-menu"></i>NowTime</el-menu-item>
-                                <el-menu-item index="/Demo/TestWj"> <i class="el-icon-menu"></i>TestWj</el-menu-item>
-                                <el-menu-item index="/Demo/ShowAsync"> <i class="el-icon-menu"></i>ShowAsync</el-menu-item>
-                                <el-menu-item index="/Demo/AsyncShow"> <i class="el-icon-menu"></i>AsyncShow</el-menu-item>
-                                <el-menu-item index="/Demo/HelloWorld"> <i
-                                        class="el-icon-menu"></i>HelloWorld</el-menu-item>
-                                <el-menu-item index="/Demo/InputText">
-                                    <el-icon><icon-menu /></el-icon>InputText</el-menu-item>
-                            </el-submenu>
-
-                            <el-submenu index="5">
-                                <!-- 二级菜单模板区域 -->
-                                <template #title>
-                                    <i class="el-icon-user"></i>
-                                    数据统计
-                                </template>
-                                <el-menu-item index="/Demo/Report"> <el-icon>
-                                        <TrendCharts />
-                                    </el-icon>数据报表</el-menu-item>
-                            </el-submenu>
-
-                            <el-submenu index="6">
-                                <!-- 二级菜单模板区域 -->
-                                <template #title>
-                                    <el-icon>
-                                        <MapLocation />
-                                    </el-icon>
-                                    开源地图
-                                </template>
-                                <el-menu-item index="/Demo/Map"> <el-icon>
-                                        <MapLocation />
-                                    </el-icon>基本地图</el-menu-item>
-                                <el-menu-item index="/Demo/MapOL"> <el-icon>
-                                        <MapLocation />
-                                    </el-icon>OL地图</el-menu-item>
-                                <el-menu-item index="/Demo/MapHome"> <el-icon>
-                                        <MapLocation />
-                                    </el-icon>地图围栏</el-menu-item>
-                                <el-menu-item index="/Demo/Amap"> <el-icon>
-                                        <MapLocation />
-                                    </el-icon>高德地图</el-menu-item>
-
-                            </el-submenu>
-                        </el-submenu>
+                                <el-menu-item index="/Demo/Button"> <i class="el-icon-user"></i>Button 按钮</el-menu-item>
+                            </el-sub-menu>
+                        </el-sub-menu>
                     </el-menu>
                 </el-aside>
 
