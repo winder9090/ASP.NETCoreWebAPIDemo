@@ -12,8 +12,7 @@
                 </div>
                 <div>
                     <el-dropdown>
-                        <el-icon style="margin-right: 8px; margin-top: 1px; color:aliceblue;margin-right: 8px; "><i
-                                class="el-icon-setting" /></el-icon>
+                        <el-icon style="margin-right: 8px; margin-top: 1px; color:aliceblue;margin-right: 8px; " ><Setting/></el-icon>
                         <template #dropdown>
                             <el-dropdown-menu>
                                 <el-dropdown-item @click="Logout">logout</el-dropdown-item>
@@ -78,6 +77,7 @@
 
 <script lang="ts" setup>
 import {
+    Setting,
     Menu as IconMenu,
     MapLocation,
 } from '@element-plus/icons-vue'
