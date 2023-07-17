@@ -17,8 +17,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service", "Service\Service.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tasks", "Tasks\Tasks.csproj", "{99ACEEF8-5F63-4AC1-AAEF-ED477E4D249D}"
 EndProject
-Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "element-plus", "element-plus\element-plus.njsproj", "{3AE1A9F9-D556-4C7D-8A4E-0622932BC690}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,10 +51,6 @@ Global
 		{99ACEEF8-5F63-4AC1-AAEF-ED477E4D249D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99ACEEF8-5F63-4AC1-AAEF-ED477E4D249D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99ACEEF8-5F63-4AC1-AAEF-ED477E4D249D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3AE1A9F9-D556-4C7D-8A4E-0622932BC690}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3AE1A9F9-D556-4C7D-8A4E-0622932BC690}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3AE1A9F9-D556-4C7D-8A4E-0622932BC690}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3AE1A9F9-D556-4C7D-8A4E-0622932BC690}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

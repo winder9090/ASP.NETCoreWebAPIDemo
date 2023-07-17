@@ -195,9 +195,14 @@
             <param name="next"></param>
             <returns></returns>
         </member>
+        <member name="T:ASP.NETCoreWebAPIDemo.Filters.GlobalActionMonitor">
+            <summary>
+            全局操作筛选器
+            </summary>
+        </member>
         <member name="M:ASP.NETCoreWebAPIDemo.Filters.GlobalActionMonitor.OnActionExecutionAsync(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext,Microsoft.AspNetCore.Mvc.Filters.ActionExecutionDelegate)">
             <summary>
-            Action请求前
+            Action请求前调用,用于验证参数
             </summary>
             <param name="context"></param>
             <param name="next"></param>
@@ -205,9 +210,16 @@
         </member>
         <member name="M:ASP.NETCoreWebAPIDemo.Filters.GlobalActionMonitor.OnResultExecuted(Microsoft.AspNetCore.Mvc.Filters.ResultExecutedContext)">
             <summary>
-            OnActionExecuted是在Action中的代码执行之后运行的方法。
+            OnResultExecuted是在Action中的代码执行之后运行的方法,用于记录操作日志
             </summary>
             <param name="context"></param>
+        </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.Filters.GlobalActionMonitor.GetLogAttribute(Microsoft.AspNetCore.Mvc.Controllers.ControllerActionDescriptor)">
+            <summary>
+            获得注解信息
+            </summary>
+            <param name="controllerActionDescriptor"></param>
+            <returns></returns>
         </member>
         <member name="T:ASP.NETCoreWebAPIDemo.Filters.VerifyAttribute">
             <summary>
@@ -302,6 +314,32 @@
             </summary>
             <param name="services"></param>
             <param name="configuration"></param>
+        </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.SyncServer.Dispose">
+            <summary>
+            释放托管资源，释放时触发
+            </summary>
+        </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.SyncServer.StartAsync(System.Threading.CancellationToken)">
+            <summary>
+            启动任务绑定
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.SyncServer.StopAsync(System.Threading.CancellationToken)">
+            <summary>
+            任务关闭时执行
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ASP.NETCoreWebAPIDemo.SyncServer.RXdata(System.Object,System.Timers.ElapsedEventArgs)">
+            <summary>
+            定时执行的操作，绑定到定时器上
+            </summary>
+            <param name="stateobject"></param>
+            <param name="e"></param>
         </member>
     </members>
 </doc>

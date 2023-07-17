@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
 
 namespace Infrastructure.Startups
 {
@@ -24,29 +23,29 @@ namespace Infrastructure.Startups
         /// 初始化程序扩展
         /// </summary>
         /// <param name="builder"></param>
-        public static void UseAppStartup(this IWebHostBuilder hostBuilder)
-        {
-            // 自动装载配置
-            hostBuilder.ConfigureAppConfiguration((hostingContext, config) =>
-            {
-                // 存储环境对象
-                InternalApp.HostEnvironment = (IHostEnvironment)hostingContext.HostingEnvironment;
+        //public static void UseAppStartup(this IWebHostBuilder hostBuilder)
+        //{
+        //    // 自动装载配置
+        //    hostBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+        //    {
+        //        // 存储环境对象
+        //        InternalApp.HostEnvironment = (IHostEnvironment)hostingContext.HostingEnvironment;
 
-                // 加载配置
-                //InternalApp.AddConfigureFiles(config, InternalApp.WebHostEnvironment);
-            });
-            // 自动注入 AddApp() 服务
-            hostBuilder.ConfigureServices((services) =>
-            {
-                // 注册 Startup 过滤器
-                //services.AddTransient<IStartupFilter, StartupFilter>();
+        //        // 加载配置
+        //        //InternalApp.AddConfigureFiles(config, InternalApp.WebHostEnvironment);
+        //    });
+        //    // 自动注入 AddApp() 服务
+        //    hostBuilder.ConfigureServices((services) =>
+        //    {
+        //        // 注册 Startup 过滤器
+        //        //services.AddTransient<IStartupFilter, StartupFilter>();
 
-                // 添加全局配置和存储服务提供器
-                InternalApp.InternalServices = services;
+        //        // 添加全局配置和存储服务提供器
+        //        InternalApp.InternalServices = services;
 
-                // 初始化应用服务
-                //services.AddApp();
-            });
-        }
+        //        // 初始化应用服务
+        //        //services.AddApp();
+        //    });
+        //}
     }
 }

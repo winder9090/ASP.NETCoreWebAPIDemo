@@ -13,12 +13,15 @@ using System.Threading.Tasks;
 
 namespace ASP.NETCoreWebAPIDemo.Filters
 {
+    /// <summary>
+    /// 全局操作筛选器
+    /// </summary>
     public class GlobalActionMonitor : ActionFilterAttribute
     {
         static readonly Logger logger = LogManager.GetCurrentClassLogger();
 
         /// <summary>
-        /// Action请求前
+        /// Action请求前调用,用于验证参数
         /// </summary>
         /// <param name="context"></param>
         /// <param name="next"></param>
@@ -28,7 +31,7 @@ namespace ASP.NETCoreWebAPIDemo.Filters
             ApiResult response = new();
             response.Code = (int)ResultCode.PARAM_ERROR;
 
-            var values = context.ModelState.Values;
+            var values = context.ModelState.Values;     // 
             foreach (var item in values)
             {
                 foreach (var err in item.Errors)
@@ -54,7 +57,7 @@ namespace ASP.NETCoreWebAPIDemo.Filters
         }
 
         /// <summary>
-        /// OnActionExecuted是在Action中的代码执行之后运行的方法。
+        /// OnResultExecuted是在Action中的代码执行之后运行的方法,用于记录操作日志
         /// </summary>
         /// <param name="context"></param>
         public override void OnResultExecuted(ResultExecutedContext context)
@@ -127,6 +130,11 @@ namespace ASP.NETCoreWebAPIDemo.Filters
             }
         }
 
+        /// <summary>
+        /// 获得注解信息
+        /// </summary>
+        /// <param name="controllerActionDescriptor"></param>
+        /// <returns></returns>
         private LogAttribute GetLogAttribute(ControllerActionDescriptor controllerActionDescriptor)
         {
             var attribute = controllerActionDescriptor.MethodInfo.GetCustomAttributes(inherit: true)

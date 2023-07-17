@@ -39,7 +39,8 @@ namespace ASP.NETCoreWebAPIDemo.Extension
                     IsAutoCloseConnection = true
                 }
                    //...增加其他数据库
-                };
+            };
+
             SugarIocServices.AddSqlSugar(iocList);
             SugarIocServices.ConfigurationSugar(db =>
             {
