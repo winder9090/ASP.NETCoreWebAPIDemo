@@ -8,10 +8,22 @@ using Swashbuckle.AspNetCore.Filters;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
+using System.Xml.Linq;
 
 namespace ASP.NETCoreWebAPIDemo.Extension
 {
-    public static class SwaggerExtension
+    internal class PrivateSwagger
+    {
+        internal Func<Stream> GetSwaggerIndex()
+        {
+            return () => GetType().GetTypeInfo().Assembly.GetManifestResourceStream("ASP.NETCoreWebAPIDemo.index.html");
+        }
+
+    }
+
+
+    public static class SwaggerExtension 
     {
         /// <summary>
         /// 
@@ -23,7 +35,13 @@ namespace ASP.NETCoreWebAPIDemo.Extension
             {
 
             });
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ASP.NETCoreWebAPIDemo v1"));
+            app.UseSwaggerUI(c => 
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "ASP.NETCoreWebAPIDemo v1");
+                PrivateSwagger p = new PrivateSwagger();
+                c.IndexStream = p.GetSwaggerIndex();
+                c.RoutePrefix = string.Empty;
+            });
         }
 
         public static void AddSwaggerConfig(this IServiceCollection services)

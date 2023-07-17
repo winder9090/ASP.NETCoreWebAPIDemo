@@ -95,6 +95,11 @@ namespace ASP.NETCoreWebAPIDemo
 
             // Swagger
             services.AddSwaggerConfig();
+
+            // 配置MiniProfiler服务
+            services.AddMiniProfiler(options => {
+                options.RouteBasePath = "/profiler";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -149,6 +154,9 @@ namespace ASP.NETCoreWebAPIDemo
 
             // HTTPS 重定向中间件 (UseHttpsRedirection) 将 HTTP 请求重定向到 HTTPS。
             app.UseHttpsRedirection();
+
+            // 激活MiniProfiler中间件，启用MiniProfiler服务，放在UseEndpoints方法之前。
+            app.UseMiniProfiler();
 
             app.UseEndpoints(endpoints =>
             {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Model;
 using Service.Models.IService;
+using StackExchange.Profiling;
 
 namespace ASP.NETCoreWebAPIDemo.Controllers
 {
@@ -29,6 +30,18 @@ namespace ASP.NETCoreWebAPIDemo.Controllers
 
             string sFileName = ExportExcel(list, "Department", "单位信息");
             return SUCCESS(new { path = "/export/" + sFileName, fileName = sFileName });
+        }
+
+        /// <summary>
+        /// 获取html片段
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("GetHtml")]
+        public IActionResult GetHtml()
+        {
+            var html = MiniProfiler.Current.RenderIncludes(HttpContext);
+            return Ok(html.Value);
         }
     }
 }
