@@ -15,6 +15,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NLog;
+using System;
+using Yitter.IdGenerator;
 
 namespace ASP.NETCoreWebAPIDemo
 {
@@ -97,7 +99,8 @@ namespace ASP.NETCoreWebAPIDemo
             services.AddSwaggerConfig();
 
             // 配置MiniProfiler服务
-            services.AddMiniProfiler(options => {
+            services.AddMiniProfiler(options =>
+            {
                 options.RouteBasePath = "/profiler";
             });
         }
@@ -190,6 +193,17 @@ namespace ASP.NETCoreWebAPIDemo
             {
                 RedisServer.Initalize();
             }
+
+            // 创建 IdGeneratorOptions 对象，可在构造函数中输入 WorkerId：
+            var WorkerId = configuration["SnowId:WorkerId"];
+            var options = new IdGeneratorOptions(Convert.ToUInt16(WorkerId));
+            // options.WorkerIdBitLength = 10; // 默认值6，限定 WorkerId 最大值为2^6-1，即默认最多支持64个节点。
+            options.SeqBitLength = 10; // 默认值6，限制每毫秒生成的ID个数。若生成速度超过5万个/秒，建议加大 SeqBitLength 到 10。
+            // options.BaseTime = Your_Base_Time; // 如果要兼容老系统的雪花算法，此处应设置为老系统的BaseTime。
+            // ...... 其它参数参考 IdGeneratorOptions 定义。
+
+            // 保存参数（务必调用，否则参数设置不生效）：
+            YitIdHelper.SetIdGenerator(options);
         }
     }
 }

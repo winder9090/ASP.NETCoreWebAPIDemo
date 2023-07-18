@@ -11,6 +11,7 @@ using Model.System;
 using Service.System.IService;
 using System;
 using System.Collections.Generic;
+using Yitter.IdGenerator;
 
 namespace ASP.NETCoreWebAPIDemo.Controllers
 {
@@ -76,7 +77,9 @@ namespace ASP.NETCoreWebAPIDemo.Controllers
         [HttpGet("captchaImage")]
         public ApiResult CaptchaImage()
         {
-            string uuid = Guid.NewGuid().ToString().Replace("-", "");
+            //string uuid = Guid.NewGuid().ToString().Replace("-", "");
+
+            string uuid = YitIdHelper.NextId().ToString();
 
             var captchaOff = "0";
 
